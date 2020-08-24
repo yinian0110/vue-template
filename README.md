@@ -1,8 +1,13 @@
-# scrm-front 后台
+# vue模板 后台
 
 #### 项目地址
 
 > 暂无
+
+### 测试账号
+
+>username：vencenty
+>password: 123456
 
 #### 安装依赖
 
