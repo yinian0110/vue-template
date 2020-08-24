@@ -1,0 +1,43 @@
+@import './base';
+
+
+@mixin move-animation($name, $animation-name) {
+  @include make-animation($name, $animation-name);
+
+  .#{$name}-enter-active, .#{$name}-appear {
+    opacity: 0;
+    animation-timing-function: ease-in-out;
+  }
+  .#{$name}-leave-active {
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@include move-animation(move-up, 'h-MoveUp');
+
+
+@keyframes h-MoveUpIn {
+  from {
+    transform-origin: 0 0;
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform-origin: 0 0;
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes h-MoveUpOut {
+  from {
+    transform-origin: 0 0;
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform-origin: 0 0;
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}

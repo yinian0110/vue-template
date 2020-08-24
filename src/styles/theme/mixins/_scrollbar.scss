@@ -1,0 +1,37 @@
+@import '../common/vars';
+
+
+@mixin scrollbar(
+  $width: $scrollbar-bar-width,
+  $height: $scrollbar-bar-height,
+  $background: $scrollbar-bar-background
+) {
+
+  &::-webkit-scrollbar {
+    height: $width;
+    width: $height;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba($background, .025);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba($background, 0.2);
+    transition: all .5s;
+
+    &:window-inactive {
+      background: rgba($background, .05);
+    }
+
+    &:hover {
+      background: rgba($background, .25);
+    }
+
+    &:active {
+      background: rgba($background, .4);
+    }
+  }
+
+}

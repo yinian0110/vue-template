@@ -1,0 +1,23 @@
+// -- colors
+$primary-color            : #2d8cf0 !default;
+$danger-color             : #ed4014 !default;
+
+// -- base
+$body-background          : #ffffff !default;
+$font-size-normal         : 14px !default;
+$font-size-small          : 12px !default;
+$font-size-large          : 16px !default;
+$font-family              : "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif !default;
+$code-family              : Consolas, Menlo, Courier, monospace;
+$text-color               : #515a6e !default;
+$lint-height-normal       : 1.5 !default;
+$lint-height-computed     : floor(($font-size-normal * $lint-height-normal)) !default;
+$cursor-disabled          : not-allowed;
+
+// -- scrollbar
+$scrollbar-bar-width      : 8px !default;
+$scrollbar-bar-height     : $scrollbar-bar-width !default;
+$scrollbar-bar-background : black !default;
+
+// -- animation
+$animation-time           : 0.3s !default;

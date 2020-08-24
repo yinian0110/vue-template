@@ -1,0 +1,27 @@
+@import '../common/vars';
+
+
+@mixin animation-base {
+  animation-duration: $animation-time;
+  animation-fill-mode: both;
+}
+
+@mixin make-animation($name, $animation-name) {
+  .#{$name}-enter-active {
+    @include animation-base;
+    animation-play-state: paused;
+  }
+  .#{$name}-leave-active {
+    @include animation-base;
+    animation-play-state: paused;
+  }
+
+  .#{$name}-enter-active {
+    animation-name: "#{$animation-name}In";
+    animation-play-state: running;
+  }
+  .#{$name}-leave-active {
+    animation-name: "#{$animation-name}Out";
+    animation-play-state: running;
+  }
+}

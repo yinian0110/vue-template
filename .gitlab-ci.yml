@@ -1,0 +1,59 @@
+variables:
+  
+  ALI_HZ_IMAGE: registry.cn-hangzhou.aliyuncs.com/domai/$CI_PROJECT_NAMESPACE-$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+  IMAGE: harbor.duomai.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:$CI_COMMIT_REF_NAME
+
+stages:
+  - build
+  - deploy
+
+build-image:
+  stage: build
+  image: docker
+  only:
+    - dev
+  script:
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
+
+# endregion ---------------------------------- oaAuth ci ----------------------------------
+
+build-online-image:
+  stage: build
+  image: docker
+  only:
+    - release
+  script:
+    - docker build -t $ALI_HZ_IMAGE .
+    - docker push $ALI_HZ_IMAGE
+    - docker tag $ALI_HZ_IMAGE $IMAGE
+    - docker push $IMAGE
+
+
+deploy-company:
+  stage: deploy
+  image: harbor.duomai.com/kubematrix/cli:v1alpha1
+  only:
+    - dev
+  script:
+    - matrix workloads deploy
+      --cluster company
+      --image $IMAGE
+      --ports 80
+      --scale 1
+      --namespace $CI_PROJECT_NAMESPACE
+      $CI_PROJECT_NAME
+
+deploy-online:
+  stage: deploy
+  image: harbor.duomai.com/kubematrix/cli:v1alpha1
+  only:
+    - release
+  script:
+    - matrix workloads deploy
+      --cluster aliyun-hz
+      --image $ALI_HZ_IMAGE
+      --ports 80
+      --scale 1
+      --namespace $CI_PROJECT_NAMESPACE
+      $CI_PROJECT_NAME

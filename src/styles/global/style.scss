@@ -1,0 +1,74 @@
+@import "libraries/normalize";
+@import "../theme/common/vars";
+@import "../theme/mixins/scrollbar";
+
+@import "../theme/animation/fade";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+html {
+  @include scrollbar();
+}
+
+body {
+  color: $text-color;
+  background: $body-background;
+}
+
+figure {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+
+/* 搜索 css */
+.common_title{
+  display:flex;
+  justify-content: space-between;
+  padding-top:0;
+}
+.common_title_left{
+  display:flex;
+  justify-content: flex-start;
+}
+.reset_search_css{
+  margin-left:10px;
+}
+.reset_clear_css{
+  color:#409eff;background:#f3f8ff;border:1px solid #f3f8ff;
+}
+.reset_add_css{
+  color:#409eff;background:#FFF; border:2px solid #409eff;
+}
+.commom-line{
+ margin: 12px 0;
+ height: 2px;
+ width: 100%;
+ background: #f5f5f5;
+}
+
+/* 弹窗统一 css */
+.dialog-380{
+  width: 380px;
+}
+.dialog-600{
+  width: 600px;
+}
+.dialog-680{
+  width: 680px;
+}

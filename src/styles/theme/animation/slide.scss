@@ -1,0 +1,40 @@
+
+@import './base';
+
+
+@mixin slide-animation($name, $animation-name) {
+  @include make-animation($name, $animation-name);
+
+  .#{$name}-enter-active {
+    opacity: 0;
+    animation-timing-function: linear;
+  }
+  .#{$name}-leave-active {
+    animation-timing-function: linear;
+  }
+}
+
+@include slide-animation(slides, 'h-Slide');
+
+
+@keyframes h-SlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes h-SlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+}

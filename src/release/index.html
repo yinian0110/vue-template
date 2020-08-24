@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="span/html; charset=UTF-8" />
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>标题</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link rel="stylesheet" href="./layer/need/layer.css" />
+</head>
+
+<body @touchstart="gtouchstart(v)" @touchmove="gtouchmove()" @touchend="gtouchend(v)">
+  <div id="app" class="index_page" style="display: none;">
+    <!-- 标准  -->
+    <div class="container" v-if="liveCodeInfo.qrcode.style === '1'">
+        <div class="guide_text" style="margin-bottom: 20px;">{{liveCodeInfo.guide_text_above}}</div>
+        <!-- 标准 -->
+        <div class="standard">
+          <div class="custom">
+            <img class="custom_avatar" :src="liveCodeInfo.custom_avatar">
+            <div class="custom_nickname">{{liveCodeInfo.custom_nickname}}</div>
+          </div>
+          <img class="qrcode" :src="liveCodeInfo.qrcode_image">
+          <div class="text" style="font-size: 12px; color: #999; margin-top: 40px;">长按识别二维码</div>
+        </div>
+        <div class="guide_text" style="margin-top: 20px;">{{liveCodeInfo.guide_text_below}}</div>
+    </div>
+    <div class="bottom"><span @click="showLayer" style="cursor:pointer;" v-if="liveCodeInfo.style === '2'">联系客服</span><span v-if="liveCodeInfo.style === '2'" style="padding: 0 20px;">|</span><span>投诉</span></div>
+    <!-- 海报 -->
+    <div class="poster" v-if="liveCodeInfo.qrcode.style === '2'" >
+        <img src="https://xcx-album-img.zmwxxcx.com/504129edbf0fda98d3f1e5c367e99efc">
+    </div>
+  </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="./layer/layer.js"></script>
+<script src="./js/index.js"></script>
+</html>
